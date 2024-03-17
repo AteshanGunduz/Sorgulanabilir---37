@@ -1,0 +1,29 @@
+form{
+    border-radius: 1rem;
+    margin: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 50vh;
+    width: 50%;
+    
+}
+
+form input{
+    font-size: smaller;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
+}
+
+form input:focus{
+ outline: none;
+}
+
+form p{
+
+    font-size: 0.9rem;
+}
