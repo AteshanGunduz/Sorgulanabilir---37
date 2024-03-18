@@ -4,6 +4,7 @@ import PostContent from './PostContent'
 import postData from '../postData'
 import { useForm } from 'react-hook-form'
 
+
 export default function DebatePost() {
   /* Challenge 
 
@@ -25,8 +26,8 @@ Form çalışmıyor. Göreviniz, kullanıcı "Gönder "e tıkladığında gönde
   const [value, setValue] = useState("")
   const [commentValue, setCommentValue] = useState("")
 
-  const {register, handleSubmit, formState: {errors, isSubmitting}, setError}= useForm()
-
+  const {register, handleSubmit, formState: {errors, isSubmitting}, setError, watch}= useForm()
+  const anonymousChecked = watch('anonymous');
 
   const onSubmit= async (data)=>{
     try{
@@ -59,7 +60,7 @@ Form çalışmıyor. Göreviniz, kullanıcı "Gönder "e tıkladığında gönde
       <form onSubmit={handleSubmit(onSubmit)}>
 
 
-       <input {...register("firstName", {required:"Kullanıcı adı gerekli", validate: (value)=> {if (!/^[a-zA-Z ]*$/.test(value)) {
+       <input {...register("firstName", {required:anonymousChecked ? false : "Kullanıcı adı gerekli", validate: (value)=> {if (!/^[a-zA-Z ]*$/.test(value)) {
         return "Lütfen geçerli bir kullanıcı adı girin.";
         } return true
         }})}type="text" value={value} onChange={(e)=>setValue(e.target.value)} className='text-input' placeholder="Kullanıcı adı girin" />
